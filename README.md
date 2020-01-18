@@ -1,0 +1,3 @@
+# polybar
+
+The polybar package
