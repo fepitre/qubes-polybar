@@ -27,6 +27,8 @@ License:        MIT and BSD
 URL:            https://polybar.github.io/
 Source0:        %{url1}/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 
+Patch0: 0001-Allow-python2-for-old-Fedora.patch
+
 ### Bundled libs
 Source1:        %{url1}/i3ipcpp/archive/%{commit1}/i3ipcpp-%{shortcommit1}.tar.gz
 Source2:        %{url1}/xpp/archive/%{commit2}/xpp-%{shortcommit2}.tar.gz
@@ -36,8 +38,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  i3-devel
 BuildRequires:  libmpdclient-devel
 BuildRequires:  libnl3-devel
-BuildRequires:  python3 >= 3.5
-BuildRequires:  python3-sphinx
+BuildRequires:  python2 >= 2.7
+BuildRequires:  python2-sphinx
 BuildRequires:  xcb-util-cursor-devel
 BuildRequires:  xcb-util-image-devel
 BuildRequires:  xcb-util-wm-devel
@@ -70,6 +72,7 @@ mv xpp-%{commit2}/*     lib/xpp
 mkdir -p doc/%{_target_platform}
 mkdir -p %{_target_platform}
 
+%patch0 -p1
 
 %build
 ### Build man page
